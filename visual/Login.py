@@ -6,13 +6,13 @@ Created on 28 de set de 2019
 import gi 
 gi.require_version("Gtk","3.0")
 from gi.repository import Gtk
-
 from controle.PegarDados import PegarDados
 from visual.DadosAlu import DadosAlu
 from controle.Conds import Conds
 from modelo.Admin import Admin
 from visual.DadosAdm import DadosAdm
 from controle.AdminControle import AdminControle
+from visual.CssLogin import CssLogin
 class Login():
         
     def manCad(self):
@@ -38,17 +38,16 @@ class Login():
         
         else:
             control = AdminControle()
-            teste = control.selecionarTodos()
-            for i in range(0,teste.__len__(),1):
-                    print("Usuário:",teste[i].getUser())
-                    print("Senha:",teste[i].getSenha())
-                    user = teste[i].getUser()
-                    senha = teste[i].getSenha()
+            test = control.selecionarTodos()
             print(self.useAdm.get_text())
             print(self.senAdm.get_text())
-            if user == self.useAdm.get_text() and senha == teste[i].getSenha():
-                adm = DadosAdm()
-                adm.dpAdm.show()
+            for i in range(0,test.__len__(),1):
+            
+                if(self.useAdm.get_text() == test[i].getUser() and self.senAdm.get_text() == test[i].getSenha()):
+                    adm = DadosAdm()
+                    adm.dpAdm.show()
+                else:
+                    print("error")
             
             
             
@@ -70,32 +69,25 @@ class Login():
             con.makeFieldsBlank(self.nomCad,self.carCad,self.nomUseCad,self.senCad,self.conSenCad)
       
         else:
-            try:
-                admin = Admin()#instância da classe admin
-                admin.setNome(admin.getNome())#encapsulamento recebe os dados que o usuário digita tudo para adicionar o banco
-                admin.setCargo(admin.getCargo())
-                admin.setUser(admin.getUser())
-                admin.setSenha(admin.getSenha())
-                control  = AdminControle()
-                if control.inserir(admin):
+        
+                control = AdminControle()
+                if control.inserir(Admin):
                     dAdm = DadosAdm()
                     dAdm.labAdmName.set_text(pd.adm.getNome())
                     dAdm.labAdmUser.set_text(pd.adm.getUser())
-                    dAdm.labAdmCar.set_text(pd.adm. getCargo())
+                    dAdm.labAdmCar.set_text(pd.adm.getCargo())
                     self.labAvi.set_text("*Usuário cadastrado com sucesso*")
-                    """
+                    
                     test = control.selecionarTodos()
                     for i in range(0,test.__len__(),1):
                         dAdm.labAdmName.set_text(test[i].getNome())
                         dAdm.labAdmUser.set_text(test[i].getUser())
                         dAdm.labAdmCar.set_text(test[i].getCargo())
             
-                """
+            
                     
       
-            except Exception as e:
-                print("Erro geral:",e)
-           
+     
                         
                    
     def __init__(self):
@@ -106,6 +98,7 @@ class Login():
         self.labMat = builder.get_object("labMat")
         self.useAdm = builder.get_object("useAdm")
         self.senAdm = builder.get_object("senAdm")
+        self.butLogCad = builder.get_object("butLogCad")
         self.nomCad = builder.get_object("nomCad")
         self.carCad = builder.get_object("carCad")
         self.ExpCad = builder.get_object("ExpCad")
@@ -124,6 +117,8 @@ class Login():
         builder.connect_signals(self)
         self.login.connect("destroy",Gtk.main_quit)
         self.login.show_all()
+        CssL = CssLogin()
+        CssL.cad_style()
         Gtk.main()
         
 

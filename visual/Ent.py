@@ -5,7 +5,7 @@ Created on 28 de set de 2019
 '''
 import gi
 from visual.Login import Login
-from time import sleep
+from visual.CssLogin import CssLogin
 gi.require_version("Gtk","3.0")
 from gi.repository import Gtk
 class Ent():
@@ -22,5 +22,7 @@ class Ent():
         self.but = builder.get_object("butEnt")
         self.ent.connect("destroy",Gtk.main_quit)
         builder.connect_signals(self)
+        CssL = CssLogin()
+        CssL.cad_style()
         self.ent.show()
         Gtk.main()

@@ -5,15 +5,36 @@ Created on 18 de nov de 2019
 '''
 from controle.Conexao import Conexao
 from controle.PegarDados import PegarDados
-import mysql.connector
 from modelo.Admin import Admin
+import mysql.connector
 class AdminControle():
-    def remover(self,ide):
+    def selectUS(self):
+            dados = ""
             try:
                 con = Conexao()
                 cursor = con.getCon().cursor()
-                sql = "DELETE FROM admin WHERE id=:id"
+                sql = "SELECT * FROM admin;"
+                consulta = cursor.fetchall()
                 cursor.execute(sql)
+                for i in range(0,consulta.__len__(),1):
+                    admin = Admin()
+                    admin.setUser(consulta[i]['user'])
+                    admin.setSenha(consulta[i]['senha'])
+                    dados.append(admin)
+              
+            except mysql.connector.Error as e:
+                print("Erro no mysql",str(e))
+            except Exception as e:
+                print("Erro",str(e))
+                
+    def remover(self,admin):
+            try:
+                con = Conexao()
+                id = admin.getId()
+                cursor = con.getCon().cursor()
+                sql = "DELETE FROM admin WHERE id = id"
+                valor = (id)
+                cursor.execute(sql,valor)
                 con.getCon.commit()
                 if con.execute():
                     return True
@@ -24,11 +45,36 @@ class AdminControle():
                 print("Erro:",e)
             except Exception as e:
                 print("Erro geral:",e) 
+    def update(self,admin):
+        try:
+            con = Conexao()
+            nome = admin.getNome()
+            cargo = admin.getCargo()
+            user = admin.getUser()
+            senha= admin.getSenha()
+            sql = "UPDATE admin SET nome,cargo,user,senha;"
+            valores = (nome,cargo,user,senha)
+            cursor = con.getCon().cursor()
+            cursor.execute(sql,valores)
+            con.getCon.commit()
+            if con.execute():
+                return True
+            else:
+                return False
+        except mysql.connector.Error as e:
+            print("Erro em mysql", e)
+        except Exception as e:
+            print("Erro geral", e)
+            
+            
+            
+            
+            
     def selecionarTodos(self):
             dados = ""
             try:
                 con = Conexao()
-                sql = "SELECT * FROM admin"
+                sql = "SELECT * FROM admin;"
                 cursor = con.getCon().cursor(dictionary=True)
                 dados = []
                 cursor.execute(sql)
@@ -45,7 +91,7 @@ class AdminControle():
             except Exception as e:
                 print("Erro:",str(e))
             return dados
-    '''
+    
     def selecionarUltimo(self):
             dados = ""
             try:
@@ -66,7 +112,7 @@ class AdminControle():
             except Exception as e:
                 print("Erro:",str(e))
             return dados                    
-       '''         
+                
     def inserir(self,evt):
             peg = PegarDados()
             try:

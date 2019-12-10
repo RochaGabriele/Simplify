@@ -29,12 +29,16 @@
           <object class="GtkBox">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="margin_top">50</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkLabel">
+              <object class="GtkLabel" id="txtLogin">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">LOGIN ALUNO</property>
+                <property name="label" translatable="yes">LOGIN</property>
+                <style>
+                  <class name="txtLogin"/>
+                </style>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -43,10 +47,14 @@
               </packing>
             </child>
             <child>
-              <object class="GtkImage">
+              <object class="GtkImage" id="imgLog">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="margin_top">30</property>
                 <property name="pixbuf">../imagens/aluno.png</property>
+                <style>
+                  <class name="imgLog"/>
+                </style>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -61,21 +69,17 @@
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <child>
-                  <object class="GtkLabel">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">MATRICULA:</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">0</property>
-                  </packing>
-                </child>
-                <child>
                   <object class="GtkEntry" id="matAlu">
+                    <property name="height_request">40</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
+                    <property name="placeholder_text" translatable="yes">           Matricula</property>
                     <property name="populate_all">True</property>
+                    <style>
+                      <class name="matAlu"/>
+                    </style>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -83,14 +87,19 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton">
+                  <object class="GtkButton" id="butLogCad">
                     <property name="label" translatable="yes">ENTRAR</property>
                     <property name="width_request">130</property>
                     <property name="height_request">40</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
+                    <property name="margin_left">260</property>
+                    <property name="margin_right">260</property>
                     <signal name="clicked" handler="entrar" swapped="no"/>
+                    <style>
+                      <class name="butLogCad"/>
+                    </style>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -106,6 +115,9 @@
                     <property name="left_attach">1</property>
                     <property name="top_attach">2</property>
                   </packing>
+                </child>
+                <child>
+                  <placeholder/>
                 </child>
                 <child>
                   <placeholder/>
@@ -164,7 +176,11 @@
               <object class="GtkLabel" id="LabTextLoa">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="margin_top">20</property>
                 <property name="label" translatable="yes">LOGIN ADMIN</property>
+                <style>
+                  <class name="LabTextLoa"/>
+                </style>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -176,6 +192,8 @@
               <object class="GtkImage" id="imgLoAD">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="margin_top">50</property>
+                <property name="margin_bottom">20</property>
                 <property name="pixbuf">../imagens/man-user.png</property>
               </object>
               <packing>
@@ -191,20 +209,13 @@
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <child>
-                  <object class="GtkLabel" id="UserLog">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">USUÁRIO:</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">0</property>
-                  </packing>
-                </child>
-                <child>
                   <object class="GtkEntry" id="useAdm">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="placeholder_text" translatable="yes">           Usuário</property>
+                    <style>
+                      <class name="inp"/>
+                    </style>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -215,6 +226,12 @@
                   <object class="GtkEntry" id="senAdm">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="visibility">False</property>
+                    <property name="invisible_char">*</property>
+                    <property name="placeholder_text" translatable="yes">           Senha</property>
+                    <style>
+                      <class name="inp"/>
+                    </style>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -222,28 +239,29 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="senLog">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">SENHA:</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">2</property>
-                  </packing>
-                </child>
-                <child>
                   <object class="GtkButton" id="butLogAdm">
                     <property name="label" translatable="yes">ENTRAR</property>
+                    <property name="width_request">100</property>
+                    <property name="height_request">40</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
+                    <property name="margin_top">30</property>
                     <signal name="clicked" handler="entrarAdm" swapped="no"/>
+                    <style>
+                      <class name="butLogCad"/>
+                    </style>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="top_attach">4</property>
                   </packing>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
                 </child>
                 <child>
                   <placeholder/>
@@ -304,42 +322,29 @@
             <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkGrid">
+              <object class="GtkBox">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="row_homogeneous">True</property>
+                <property name="orientation">vertical</property>
+                <child>
+                  <placeholder/>
+                </child>
                 <child>
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="halign">end</property>
-                    <property name="valign">center</property>
-                    <property name="margin_left">10</property>
-                    <property name="margin_right">10</property>
-                    <property name="margin_top">4</property>
-                    <property name="margin_bottom">4</property>
-                    <property name="label" translatable="yes">Nome:</property>
-                    <property name="justify">center</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkEntry" id="nomCad">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
                     <property name="halign">center</property>
                     <property name="valign">center</property>
-                    <property name="margin_right">10</property>
-                    <property name="margin_top">4</property>
-                    <property name="margin_bottom">4</property>
-                    <property name="populate_all">True</property>
+                    <property name="margin_top">20</property>
+                    <property name="label" translatable="yes">CADASTRO</property>
+                    <style>
+                      <class name="LabTextLoa"/>
+                    </style>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">0</property>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
                   </packing>
                 </child>
                 <child>
@@ -349,8 +354,9 @@
                     <property name="justify">center</property>
                   </object>
                   <packing>
-                    <property name="left_attach">2</property>
-                    <property name="top_attach">0</property>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">2</property>
                   </packing>
                 </child>
               </object>
@@ -361,20 +367,30 @@
               </packing>
             </child>
             <child>
-              <object class="GtkSeparator">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
-            <child>
               <object class="GtkGrid">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="margin_top">50</property>
+                <child>
+                  <object class="GtkEntry" id="nomCad">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
+                    <property name="margin_right">10</property>
+                    <property name="placeholder_text" translatable="yes">           Nome</property>
+                    <property name="populate_all">True</property>
+                    <style>
+                      <class name="inp"/>
+                    </style>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">0</property>
+                  </packing>
+                </child>
                 <child>
                   <object class="GtkEntry" id="carCad">
                     <property name="visible">True</property>
@@ -382,26 +398,11 @@
                     <property name="halign">center</property>
                     <property name="valign">center</property>
                     <property name="margin_right">10</property>
-                    <property name="margin_top">4</property>
-                    <property name="margin_bottom">4</property>
+                    <property name="placeholder_text" translatable="yes">           Cargo</property>
                     <property name="populate_all">True</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">4</property>
-                    <property name="top_attach">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="halign">center</property>
-                    <property name="valign">center</property>
-                    <property name="margin_left">10</property>
-                    <property name="margin_right">10</property>
-                    <property name="margin_top">4</property>
-                    <property name="margin_bottom">4</property>
-                    <property name="label" translatable="yes">Cargo:</property>
+                    <style>
+                      <class name="inp"/>
+                    </style>
                   </object>
                   <packing>
                     <property name="left_attach">3</property>
@@ -409,41 +410,39 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkEntry" id="senCad">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="halign">end</property>
+                    <property name="can_focus">True</property>
+                    <property name="halign">center</property>
                     <property name="valign">center</property>
-                    <property name="margin_left">10</property>
-                    <property name="margin_top">4</property>
-                    <property name="margin_bottom">4</property>
-                    <property name="label" translatable="yes">Usuário:</property>
+                    <property name="margin_right">10</property>
+                    <property name="visibility">False</property>
+                    <property name="invisible_char">*</property>
+                    <property name="placeholder_text" translatable="yes">            Senha</property>
+                    <property name="populate_all">True</property>
+                    <style>
+                      <class name="inp"/>
+                    </style>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">0</property>
+                    <property name="left_attach">3</property>
+                    <property name="top_attach">1</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkEntry" id="nomUseCad">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="halign">start</property>
+                    <property name="halign">center</property>
                     <property name="valign">center</property>
                     <property name="margin_right">10</property>
                     <property name="margin_top">4</property>
                     <property name="margin_bottom">4</property>
+                    <property name="placeholder_text" translatable="yes">           Usuário</property>
                     <property name="populate_all">True</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkSeparator">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <style>
+                      <class name="inp"/>
+                    </style>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -451,54 +450,44 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkSeparator">
+                  <object class="GtkEntry" id="conSenCad">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can_focus">True</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
+                    <property name="visibility">False</property>
+                    <property name="invisible_char">*</property>
+                    <property name="placeholder_text" translatable="yes">Confirmarção de Senha</property>
+                    <property name="populate_all">True</property>
+                    <style>
+                      <class name="inp"/>
+                    </style>
                   </object>
                   <packing>
                     <property name="left_attach">2</property>
-                    <property name="top_attach">1</property>
+                    <property name="top_attach">2</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkSeparator">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">4</property>
-                    <property name="top_attach">1</property>
-                  </packing>
+                  <placeholder/>
                 </child>
                 <child>
-                  <object class="GtkSeparator">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">3</property>
-                    <property name="top_attach">1</property>
-                  </packing>
+                  <placeholder/>
                 </child>
                 <child>
-                  <object class="GtkSeparator">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">1</property>
-                  </packing>
+                  <placeholder/>
                 </child>
                 <child>
-                  <object class="GtkSeparator">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">2</property>
-                    <property name="top_attach">0</property>
-                  </packing>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
                 </child>
               </object>
               <packing>
@@ -511,91 +500,60 @@
               <object class="GtkGrid">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="halign">end</property>
-                    <property name="valign">center</property>
-                    <property name="margin_left">10</property>
-                    <property name="margin_right">10</property>
-                    <property name="margin_top">4</property>
-                    <property name="margin_bottom">4</property>
-                    <property name="label" translatable="yes">Senha:</property>
-                    <property name="justify">fill</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkEntry" id="senCad">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="halign">start</property>
-                    <property name="valign">center</property>
-                    <property name="margin_right">10</property>
-                    <property name="margin_top">4</property>
-                    <property name="margin_bottom">4</property>
-                    <property name="visibility">False</property>
-                    <property name="invisible_char">*</property>
-                    <property name="populate_all">True</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="halign">end</property>
-                    <property name="valign">center</property>
-                    <property name="margin_left">10</property>
-                    <property name="margin_right">10</property>
-                    <property name="margin_top">4</property>
-                    <property name="margin_bottom">4</property>
-                    <property name="label" translatable="yes">Confirmação de senha:</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkEntry" id="conSenCad">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="halign">start</property>
-                    <property name="margin_right">10</property>
-                    <property name="margin_top">4</property>
-                    <property name="margin_bottom">4</property>
-                    <property name="visibility">False</property>
-                    <property name="invisible_char">*</property>
-                    <property name="populate_all">True</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">1</property>
-                  </packing>
-                </child>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="margin_top">30</property>
                 <child>
                   <object class="GtkButton" id="cadButcad">
                     <property name="label" translatable="yes">Cadastrar</property>
+                    <property name="width_request">130</property>
+                    <property name="height_request">40</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="halign">center</property>
-                    <property name="margin_top">9</property>
-                    <property name="margin_bottom">5</property>
+                    <property name="margin_right">20</property>
                     <signal name="clicked" handler="cadasAdm" swapped="no"/>
+                    <style>
+                      <class name="butLogCad"/>
+                    </style>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
+                    <property name="left_attach">0</property>
                     <property name="top_attach">2</property>
                   </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="apaCam">
+                    <property name="label" translatable="yes">Apagar campos</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <style>
+                      <class name="apaCam"/>
+                    </style>
+                  </object>
+                  <packing>
+                    <property name="left_attach">2</property>
+                    <property name="top_attach">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
                 </child>
                 <child>
                   <placeholder/>
