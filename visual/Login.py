@@ -72,17 +72,17 @@ class Login():
         
                 control = AdminControle()
                 if control.inserir(Admin):
-                    dAdm = DadosAdm()
-                    dAdm.labAdmName.set_text(pd.adm.getNome())
-                    dAdm.labAdmUser.set_text(pd.adm.getUser())
-                    dAdm.labAdmCar.set_text(pd.adm.getCargo())
+                    DAdm = DadosAdm()
+                    DAdm.labAdmName.set_text(pd.adm.getNome())
+                    DAdm.labAdmUser.set_text(pd.adm.getUser())
+                    DAdm.labAdmCar.set_text(pd.adm.getCargo())
                     self.labAvi.set_text("*Usuário cadastrado com sucesso*")
                     
                     test = control.selecionarTodos()
                     for i in range(0,test.__len__(),1):
-                        dAdm.labAdmName.set_text(test[i].getNome())
-                        dAdm.labAdmUser.set_text(test[i].getUser())
-                        dAdm.labAdmCar.set_text(test[i].getCargo())
+                        DAdm.labAdmName.set_text(test[i].getNome())
+                        DAdm.labAdmUser.set_text(test[i].getUser())
+                        DAdm.labAdmCar.set_text(test[i].getCargo())
             
             
                     
