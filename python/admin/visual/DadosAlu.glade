@@ -127,7 +127,7 @@
                       <object class="GtkLabel" id="lama">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">muda caraio</property>
+                        <property name="label" translatable="yes">muda </property>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>

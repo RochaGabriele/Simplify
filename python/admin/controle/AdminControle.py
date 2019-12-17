@@ -1,7 +1,7 @@
 '''
 Created on 18 de nov de 2019
 
-@author: jeff
+@author: jefferson Oliveira
 '''
 import mysql.connector
 
@@ -11,6 +11,28 @@ from admin.modelo.Aluno import Aluno
 
 
 class AdminControle():
+    def selecionarTodosAes(self):
+            dados = ""
+            try:
+                con = Conexao()
+                sql = "SELECT * FROM alunos;"
+                cursor = con.getCon().cursor(dictionary=True)
+                dados = []
+                cursor.execute(sql)
+                consulta = cursor.fetchall()
+                for i in range(0,consulta.__len__(),1):
+                    aluno = Aluno()
+                    aluno.setNomeAlu(consulta[i]['nome'])
+                    aluno.setCurso(consulta[i]['curso'])
+                    aluno.setSerie(consulta[i]['serie'])
+                    aluno.setMatricula(consulta[i]['matricula'])
+                    dados.append(aluno)
+            except mysql.connector.Error as e:
+                print("Erro no mysql:",str(e))
+            except Exception as e:
+                print("Erro:",str(e))
+            return dados
+
     def selectUS(self):
             dados = ""
             try:
@@ -30,16 +52,15 @@ class AdminControle():
             except Exception as e:
                 print("Erro",str(e))
       
-    def remover(self,admin,id):
+    def remover(self,matricula):
             try:
-                con = Conexao()
-                id = admin.getId()
-                cursor = con.getCon().cursor()
-                sql = "DELETE FROM admin WHERE id = id"
-                valor = (id)
+                conexao = Conexao()
+                cursor = conexao.getCon().cursor()
+                sql = "DELETE FROM alunos WHERE matricula = %s;"
+                valor = (matricula)
                 cursor.execute(sql,valor)
-                con.getCon().commit()
-                if con.execute():
+                conexao.getCon().commit()
+                if cursor.execute():
                     return True
                 else:
                     return False

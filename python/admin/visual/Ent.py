@@ -4,18 +4,20 @@ Created on 28 de set de 2019
 @author: jeff
 '''
 import gi
-gi.require_version("Gtk","3.0")
 from gi.repository import Gtk
 
 from admin.visual.CssLogin import CssLogin
 from admin.visual.Login import Login
 
 
+gi.require_version("Gtk","3.0")
+
+
+
 
 class Ent():
  
-    def teste(self):
-        print("Teste")
+    
     def cont(self,evt):
         self.ent.hide()
         self.a = Login()

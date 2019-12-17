@@ -1,3 +1,7 @@
+"""
+@author: Gabriele Rocha
+"""
+
 import gi
 from gi.repository import Gtk, Gdk
 

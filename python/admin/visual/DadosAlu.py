@@ -1,3 +1,9 @@
+'''
+@author:Jefferson Oliveira
+Janela usada para testes
+'''
+
+
 import gi
 from gi.repository import Gtk
 
@@ -12,7 +18,7 @@ class DadosAlu():
    
     def __init__(self):
         builder = Gtk.Builder()
-        builder.add_from_file("visual/DadosAlu.glade")
+        builder.add_from_file("admin/visual/DadosAlu.glade")
         self.dapWin = builder.get_object("dapWin")
         self.lama = builder.get_object("lama")
         self.labSerie = builder.get_object("labSerie")

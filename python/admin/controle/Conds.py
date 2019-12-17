@@ -1,7 +1,7 @@
 '''
 Created on 14 de nov de 2019
 
-@author: jeff
+@author: jefferson Oliveira
 '''
 
 
@@ -9,7 +9,6 @@ Created on 14 de nov de 2019
 #from django.forms import forms
 
 class Conds():
-        
     
     def Campos_em_branco(self,mat):
         if mat == "":

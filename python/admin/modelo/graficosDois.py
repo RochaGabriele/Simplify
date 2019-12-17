@@ -1,3 +1,9 @@
+'''
+@author: Gabriele rocha
+Não utilizada, mas útil
+'''
+
+
 class graficosDois:
     
     __id = ""

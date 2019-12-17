@@ -1,3 +1,9 @@
+'''
+@author: Gabriele Rocha
+Não utilizada, mas útil
+'''
+
+
 class graficosTres:
     
     __id = ""

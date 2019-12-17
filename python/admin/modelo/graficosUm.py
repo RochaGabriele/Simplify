@@ -1,3 +1,8 @@
+'''
+@author: Gabriele Rocha
+Não utilizada, mas Útil
+'''
+
 class graficosUm:
     
     __id = ""

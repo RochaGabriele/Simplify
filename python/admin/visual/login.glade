@@ -96,7 +96,7 @@
                     <property name="receives_default">True</property>
                     <property name="margin_left">260</property>
                     <property name="margin_right">260</property>
-                    <signal name="clicked" handler="entrar" swapped="no"/>
+                    <signal name="clicked" handler="LoginAluno" swapped="no"/>
                     <style>
                       <class name="butLogCad"/>
                     </style>
@@ -516,6 +516,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
+                    <signal name="clicked" handler="apagarCampos" swapped="no"/>
                     <style>
                       <class name="apaCam"/>
                     </style>

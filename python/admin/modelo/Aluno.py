@@ -1,7 +1,7 @@
 '''
 Created on 7 de nov de 2019
 
-@author: jeff
+@author: jefferson Oliveira
 '''
 
 class Aluno:

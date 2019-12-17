@@ -1,3 +1,7 @@
+'''
+@author: jefferson Oliveira, Gabriele Rocha, José Maik
+'''
+
 import mysql.connector
 
 
@@ -17,7 +21,7 @@ class Conexao:
             self.setCon(mysql.connector.connect(user=usr,password=senha,database=bd,host=hst))
 
         except mysql.connector.Error as e:
-            print("Erro ao conectar com o banco: ", e)
+            print("Erro ao conectar com o banco: ", str(e))
         except Exception as e:
-            print("Erro geral:" , e)
+            print("Erro geral:" , str(e))
 
